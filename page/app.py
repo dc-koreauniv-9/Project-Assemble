@@ -1,20 +1,27 @@
-from flask import Flask,render_template
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
+def main():
+    return render_template('base.html')
+
+
 @app.route('/1p/')
 def hello_world():
     return render_template('index.html')
+
 
 @app.route('/2p/')
 def hello_world2():
     return render_template('index2p.html')
 
+
 @app.route('/3p/')
 def hello_world3():
     return render_template('index3p.html')
+
 
 @app.route('/4p/')
 def hello_world4():
