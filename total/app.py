@@ -18,6 +18,7 @@ def hello_world3():
 
 @app.route('/4p/')
 def hello_world4():
+    print("가나다라마바사")
     return render_template('index4p.html')
 
 
