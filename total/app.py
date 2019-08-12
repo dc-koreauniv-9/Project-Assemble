@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/1p/')
 def hello_world():
+    print("run")
     return render_template('index1p.html')
 
 @app.route('/2p')
