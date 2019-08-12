@@ -7,6 +7,7 @@ app = Flask(__name__)
 @app.route('/1p/')
 def hello_world():
     print("run")
+    print('테스트')
     return render_template('index1p.html')
 
 @app.route('/2p')
@@ -19,7 +20,7 @@ def hello_world3():
 
 @app.route('/4p/')
 def hello_world4():
-    print("가나다라마바사")
+    print("rkskek")
     return render_template('index4p.html')
 
 
