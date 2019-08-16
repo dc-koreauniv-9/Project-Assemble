@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title> Political neutral reader</title>
+    <title>정치 오뚜기</title>
 
     <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/1p">정치 중립 판독기</a>
+      <a class="navbar-brand" href="/1p">정치 오뚜기</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -18,13 +19,13 @@
             <a class="nav-link" href="/1p">소개 </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/2p">모델 설명</a>
+            <a class="nav-link" href="/2p">모델/분석 설명</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/3p">정치 성향 판독 <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/3p">기사 및 사설 성향 분석<span class="sr-only">(current)</span> </a>
           </li>
-         <li class="nav-item">
-            <a class="nav-link" href="/4p">개인 글 성향 판독</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/4p">개인 글 성향 분석</a>
           </li>
         </ul>
       </div>
@@ -39,27 +40,67 @@
 
 <body>
 
-   <form>
+<ul class="list-group">
+  <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=100&oid=081&aid=0003021314">靑 “日에 D램 수출중단은 사실무근”… 소재부품장비 1조 6578억 이달 예타 면제</a></li>
+  <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=264&oid=001&aid=0011017749">안중근 손녀 "내 나라 묻히러와" 文대통령 "안중근 기개 떠올라"(종합)</a></li>
+  <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=265&oid=018&aid=0004444844">정미경 "한일 갈등, 文정부 자작극" 주장에 민주 "일베 게시판?"</a></li>
+  <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=268&oid=022&aid=0003388904">北 ‘신무기 개발’ 103명 승진 잔치</a></li>
+  <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=266&oid=081&aid=0003021311">[단독] 연금공단 이사장 “日 전범기업 투자 제한 절대로 안 될 일”</a></li>
+  <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=267&oid=001&aid=0011017731">정부 "후쿠시마 원전 오염수 적극 대응"…도쿄올림픽 겨냥 압박(종합3보)</a></li>
+  <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=269&oid=422&aid=0000387982"> 안철수, 쏟아지는 러브콜에도 조기복귀 일축</a></li>
+</ul>
 
-        <div class="form-group mx-sm-3">
-            <label for="try-search"> 검색하기</label>
-            <textarea type="text" class="form-control" placeholder="TEXT" style="width:60%;" rows="10"></textarea>
-         </div>
-         <div class="col-auto">
-            <button type="submit" class="btn btn-primary" id="search" style="margin-top:10px;">검색</button>
-         </div>
-         <div id="result"> </div>
 
-        <div class="card" style="width: 30rem;">
-            <img class="card-img-top" src="..." alt="분석 결과">
-            <div class="card-body">
-                <p class="card-text">해당 뉴스의 기사는 - 진보나 보수입니다..</p>
-            </div>
-        </div>
+<script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></link>
+    <script type="text/javascript">
+    $(function() {
+        var ctx1 = $('#pieChart');
+        var myPieChart = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['보수', '진보'],
+                datasets: [{
+                    label: '', data: [70, 30],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                    display:false
+                },
+                title: {
+                  display: true,
+            text: '현재 클릭하신 기사의 정치 성향 비율입니다.',
+            position: 'top',
+            fontSize: 30,
+            padding: 20
+                },
 
-    </form>
+            }
+        })
+    })
+    </script>
+
+<canvas id="pieChart"></canvas>
 
 </body>
+
+
+
+
+</style>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
