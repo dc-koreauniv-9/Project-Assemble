@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title> Political neutral reader</title>
+    <title>정치 오뚜기</title>
 
     <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/1p">정치 중립 판독기</a>
+      <a class="navbar-brand" href="/1p">정치 오뚜기</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -18,13 +18,13 @@
             <a class="nav-link" href="/1p">소개 </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/2p">모델 설명</a>
+            <a class="nav-link" href="/2p">모델/분석 설명</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/3p">정치 성향 판독</a>
+            <a class="nav-link" href="/3p">기사 및 사설 성향 분석</a>
           </li>
          <li class="nav-item active">
-            <a class="nav-link" href="/4p">개인 글 성향 판독 <span class="sr-only">(current)</span> </a>
+            <a class="nav-link" href="/4p">개인 글 성향 분석<span class="sr-only">(current)</span> </a>
           </li>
         </ul>
       </div>
@@ -39,27 +39,29 @@
 
 <body>
 
-<form>
+   <form>
 
-        <div class="form-group mx-sm-3">
-            <label for="try-search"> 검색하기</label>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-             <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> TEXT
-             </label>
-             <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> URL
-             </label>
-        </div>
-            <input type="text" class="form-control" placeholder="단어 또는 문장" style="width:800px;">
+  <div class="form-group mx-sm-3">
+            <label for="try-search" style="padding-left:12px;">원하시는 내용을 입력해주세요.</label>
+            <textarea type="text" class="form-control" placeholder="분석하실 내용을 입력해주세요." style="width:100%;" rows="10"></textarea>
          </div>
+
          <div class="col-auto">
-            <button type="submit" class="btn btn-primary" id="search" style="margin-top:10px;">검색</button>
+            <button type="submit" class="btn btn-primary" id="search" style="margin-top:10px;">분석</button>
          </div>
          <div id="result"> </div>
+
+       <div class="form-group mx-sm-3">
+            <label for="try-search"> 분석 결과</label>
+            <textarea type="text" class="form-control" placeholder="입력하신 글의 정치 성향은 보수 성향 입니다" style="width:50%;" rows="10"></textarea>
+         </div>
+
+
     </form>
 
 </body>
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
