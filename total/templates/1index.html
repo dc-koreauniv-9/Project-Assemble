@@ -123,6 +123,7 @@
                       <div class="carousel-inner">
                         <div class="carousel-item active">
                           <ul class="timeline">
+
                             <li>
                               <!--"_blank" tıklanan linkin yeni sekmede açılmasını sağlar.-->
                               <a target="_blank" href="#">News Headline</a>
@@ -517,6 +518,18 @@
           // console.log(d);
       });
     </script>
+<thead>
+<th>타이틀</th>
+</thead>
+<tbody>
+{% for i in table %}
+<tr>
+    <td>{{ i.title }}</td>
+    <td>{{ i.content }}</td>
+</tr>
+
+</tbody>
+{% endfor %}
 </body>
 
 </html>
