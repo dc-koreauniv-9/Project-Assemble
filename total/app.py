@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 @app.route('/')
 @app.route('/1p/')
 def hello_world():
-    table = Table2.query.limit(3).all()
+    table = Table2.query.limit(9).all()
     return render_template('1index.html', table=table)
 
 @app.route('/2p/')

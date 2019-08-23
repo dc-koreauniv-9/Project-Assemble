@@ -114,73 +114,37 @@
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
-                    <div class="card-header" style="width:100%;"><a href="anasayfa.html" class="isteColor">
-                      <h5 class="text-left m-2" style="font-weight: bold">오늘의 뉴스</h5>
+                    <div class="card-header"><a href="anasayfa.html" class="isteColor">
+                      <h5 class="text-center m-2" style="font-weight: bold">오늘의 뉴스</h5>
                     </a></div>
                   <div class="card-body">
       <!--              속도 data-interval-->
                     <div class="carousel vert slide" data-ride="carousel" data-interval="2500">
                       <div class="carousel-inner">
-                        <div class="carousel-item active">
+                      {% for i3 in table |batch(3) %}
+                          {% if loop.index0 == 0 %}
+                            <div class="carousel-item active">
+                            {% else %}
+                            <div class="carousel-item">
+                            {% endif %}
                           <ul class="timeline">
-
-                            {% for i in table %}
-<!--                            <li>-->
-<!--                                <a target="_blank" href="#">{{ i.title }}</a>-->
-<!--                                <a href="#" class="float-right">{{ i.date }}</a>-->
-<!--                                <p class="article">{{ i.content }}</p>-->
-<!--                            </li>-->
-                            <div id="accordion">
-                              <div class="card">
-                                <div class="card-header py-1" style="padding:0;" id="headingOne">
-                                  <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                      {{ i.title }} : {{ i.date }}
-                                    </button>
-                                    <input class="btn btn-primary btn-sm" type="button" value="분석하기" style="float:right; vertical-align: middle;">
-                                  </h5>
-                                </div>
-
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                  <div class="card-body">
-                                    {{ i.content }}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            {% endfor %}
-                          </ul>
-                        </div>
-                        <div class="carousel-item">
-                          <ul class="timeline">
+                          {% for i in i3 %}
                             <li>
-                              <a href="#">News Headline</a>
-                              <a href="#" class="float-right">09 Ocak, 2019</a>
-                              <p class="article">>Haberler burada gözükecek..Haberler burada gözükecek..Haberler burada
-                                gözükecek..Haberler burada gözükecek..Haberler burada gözükecek..</p>
+                                <a target="_blank" href={{ i.link }}>{{ i.title }}</a>
+                                <a href="#" class="float-right">{{ i.date }}</a>
+                                <p class="article">{{ i.content[:200] }}...</p>
                             </li>
                             <hr>
-                            <li>
-                              <a href="#">News Headline</a>
-                              <a href="#" class="float-right">4 Temmuz, 2018</a>
-                              <p>Haberler burada gözükecek..Haberler burada gözükecek..Haberler burada gözükecek..Haberler
-                                burada gözükecek..Haberler burada gözükecek..Haberler burada gözükecek..Haberler burada
-                                gözükecek..</p>
-                            </li>
-                             <hr>
-                            <li>
-                              <a href="#">News Headline</a>
-                              <a href="#" class="float-right">4 Temmuz, 2018</a>
-                              <p>Haberler burada gözükecek..Haberler burada gözükecek..Haberler burada gözükecek..Haberler
-                                burada gözükecek..Haberler burada gözükecek..Haberler burada gözükecek..Haberler burada
-                                gözükecek..</p>
-                            </li>
+                          {% endfor %}
                           </ul>
                         </div>
+                      {% endfor %}
                       </div>
                     </div>
                   </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
                   </div>
                 </div>
               </div>
