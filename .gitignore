@@ -5,3 +5,5 @@ __pycache__/
 venv/
 .gitignore
 data_set
+naver_news.db
+TheMinJoo.db
