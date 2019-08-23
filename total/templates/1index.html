@@ -489,7 +489,6 @@
 
     <script>
       $.get("/static/data.json").done(function(d) {
-          var data ={{user}}
           var ul = $("ul.timeline");
           console.log(ul);
           for (i=0; i<d.length; i++) {
@@ -499,8 +498,6 @@
               ul.append(li)
               console.log(d[i]);
           }
-          // $("ul.timeline")
-          // console.log(d);
       });
     </script>
 </body>
