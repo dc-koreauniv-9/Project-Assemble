@@ -31,8 +31,7 @@ class Table2(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Text, nullable=False)
     title = db.Column(db.Text, nullable=False)
-    content = db.Column(db.Text
-                        , nullable=False)
+    content = db.Column(db.Text, nullable=False)
     link = db.Column(db.Text, nullable=False)
 
 
