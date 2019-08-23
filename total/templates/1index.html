@@ -114,12 +114,12 @@
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
-                    <div class="card-header"><a href="anasayfa.html" class="isteColor">
-                      <h5 class="text-center m-2" style="font-weight: bold">오늘의 뉴스</h5>
+                    <div class="card-header py-1" style="width:100%;"><a href="anasayfa.html" class="isteColor">
+                      <h5 class="text-left m-2" style="font-weight: bold; ">오늘의 뉴스</h5>
                     </a></div>
                   <div class="card-body">
       <!--              속도 data-interval-->
-                    <div class="carousel vert slide" data-ride="carousel" data-interval="2500">
+                    <div class="carousel vert slide" data-ride="carousel" data-interval="false">
                       <div class="carousel-inner">
                       {% for i3 in table |batch(3) %}
                           {% if loop.index0 == 0 %}
@@ -142,9 +142,6 @@
                       </div>
                     </div>
                   </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
                   </div>
                 </div>
               </div>
