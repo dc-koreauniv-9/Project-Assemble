@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Political neutral reader</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{{url_for('static',filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{{url_for('static',filename='css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+</head>
+
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/1p">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">정치 오뚜기 <sup>3Sec</sup></div>
+
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/1p">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Introduce
+      </div>
+
+      <!-- Nav Item - 설명 -->
+      <li class="nav-item">
+        <a class="nav-link" href="/2p">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>모델/분석 설명</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Analysis
+      </div>
+
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="/3p">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>기사 및 사설 성향 분석</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/4p">
+          <i class="fas fa-fw fa-table"></i>
+          <span>개인 글 성향 분석</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+<!--        &lt;!&ndash; Topbar &ndash;&gt;-->
+<!--        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">-->
+
+<!--        </nav>-->
+<!--        &lt;!&ndash; End of Topbar &ndash;&gt;-->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Article Analyze</h1>
+          <p class="mb-4">기사에 대한 성향 분석</p>
+
+
+
+
+          <ul class="list-group">
+            <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=100&oid=081&aid=0003021314">靑 “日에 D램 수출중단은 사실무근”… 소재부품장비 1조 6578억 이달 예타 면제</a></li>
+            <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=264&oid=001&aid=0011017749">안중근 손녀 "내 나라 묻히러와" 文대통령 "안중근 기개 떠올라"(종합)</a></li>
+            <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=265&oid=018&aid=0004444844">정미경 "한일 갈등, 文정부 자작극" 주장에 민주 "일베 게시판?"</a></li>
+            <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=268&oid=022&aid=0003388904">北 ‘신무기 개발’ 103명 승진 잔치</a></li>
+            <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=266&oid=081&aid=0003021311">[단독] 연금공단 이사장 “日 전범기업 투자 제한 절대로 안 될 일”</a></li>
+            <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=267&oid=001&aid=0011017731">정부 "후쿠시마 원전 오염수 적극 대응"…도쿄올림픽 겨냥 압박(종합3보)</a></li>
+            <li class="list-group-item"><a href="https://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=100&sid2=269&oid=422&aid=0000387982"> 안철수, 쏟아지는 러브콜에도 조기복귀 일축</a></li>
+          </ul>
+
+
+          <script
+                src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous">
+              </script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></link>
+              <script type="text/javascript">
+              $(function() {
+                  var ctx1 = $('#pieChart');
+                  var myPieChart = new Chart(ctx1, {
+                      type: 'pie',
+                      data: {
+                          labels: ['보수', '진보'],
+                          datasets: [{
+                              label: '', data: [70, 30],
+                              backgroundColor: [
+                                  'rgba(255, 99, 132, 0.2)',
+                                  'rgba(54, 162, 235, 0.2)'],
+                              borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)'],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          legend: {
+                              display:false
+                          },
+                          title: {
+                            display: true,
+                      text: '현재 클릭하신 기사의 정치 성향 비율입니다.',
+                      position: 'top',
+                      fontSize: 30,
+                      padding: 20
+                          },
+
+                      }
+                  })
+              })
+              </script>
+
+          <canvas id="pieChart"></canvas>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Group Nine OTTOGI 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{url_for('static',filename='js/sb-admin-2.min.js')}}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{{url_for('static',filename='vendor/chart.js/Chart.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{url_for('static',filename='js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{url_for('static',filename='js/demo/chart-pie-demo.js')}}"></script>
+  <script src="{{url_for('static',filename='js/demo/chart-bar-demo.js')}}"></script>
+
+</body>
+
+</html>
