@@ -114,8 +114,8 @@
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
-                    <div class="card-header"><a href="anasayfa.html" class="isteColor">
-                      <h5 class="text-center m-2" style="font-weight: bold">오늘의 뉴스</h5>
+                    <div class="card-header" style="width:100%;"><a href="anasayfa.html" class="isteColor">
+                      <h5 class="text-left m-2" style="font-weight: bold">오늘의 뉴스</h5>
                     </a></div>
                   <div class="card-body">
       <!--              속도 data-interval-->
@@ -125,12 +125,30 @@
                           <ul class="timeline">
 
                             {% for i in table %}
-                            <li>
-                                <a target="_blank" href="#">{{ i.title }}</a>
-                                <a href="#" class="float-right">{{ i.date }}</a>
-                                <p class="article">{{ i.content }}</p>
-                            </li>
-                            <hr>
+<!--                            <li>-->
+<!--                                <a target="_blank" href="#">{{ i.title }}</a>-->
+<!--                                <a href="#" class="float-right">{{ i.date }}</a>-->
+<!--                                <p class="article">{{ i.content }}</p>-->
+<!--                            </li>-->
+                            <div id="accordion">
+                              <div class="card">
+                                <div class="card-header py-1" style="padding:0;" id="headingOne">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                      {{ i.title }} : {{ i.date }}
+                                    </button>
+                                    <input class="btn btn-primary btn-sm" type="button" value="분석하기" style="float:right; vertical-align: middle;">
+                                  </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                  <div class="card-body">
+                                    {{ i.content }}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                             {% endfor %}
                           </ul>
                         </div>
@@ -163,9 +181,6 @@
                       </div>
                     </div>
                   </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
                   </div>
                 </div>
               </div>
