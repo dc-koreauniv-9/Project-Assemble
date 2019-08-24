@@ -121,20 +121,38 @@
       <!--              속도 data-interval-->
                     <div class="carousel vert slide" data-ride="carousel" data-interval="false">
                       <div class="carousel-inner">
-                      {% for i3 in table |batch(3) %}
+                      {% for i3 in table |batch(5) %}
                           {% if loop.index0 == 0 %}
                             <div class="carousel-item active">
                             {% else %}
                             <div class="carousel-item">
                             {% endif %}
-                          <ul class="timeline">
+                          <ul class="timeline" style="padding:0;">
                           {% for i in i3 %}
-                            <li>
-                                <a target="_blank" href={{ i.link }}>{{ i.title }}</a>
-                                <a href="#" class="float-right">{{ i.date }}</a>
-                                <p class="article">{{ i.content[:200] }}...</p>
-                            </li>
-                            <hr>
+<!--                            <li>-->
+<!--                                <a target="_blank" href={{ i.link }}>{{ i.title }}</a>-->
+<!--                                <a href="#" class="float-right">{{ i.date }}</a>-->
+<!--                                <p class="article">{{ i.content[:200] }}...</p>-->
+<!--                            </li>-->
+                              <div id="accordion">
+                              <div class="card">
+                                <div class="card-header py-1" style="padding:0;" id="headingOne">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                      {{ i.title }} : {{ i.date }}
+                                    </button>
+                                    <input class="btn btn-primary btn-sm" type="button" value="분석하기" style="float:right; vertical-align: middle;">
+                                  </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                  <div class="card-body">
+                                    {{ i.content }}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+<!--                            <hr>-->
                           {% endfor %}
                           </ul>
                         </div>
