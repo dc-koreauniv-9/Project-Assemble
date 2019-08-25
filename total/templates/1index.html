@@ -106,27 +106,51 @@
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
-                    <div class="card-header"><a href="anasayfa.html" class="isteColor">
-                      <h5 class="text-center m-2" style="font-weight: bold">오늘의 뉴스</h5>
+                    <div class="card-header py-1" style="width:100%;"><a href="anasayfa.html" class="isteColor">
+                      <h5 class="text-left m-2" style="font-weight: bold; ">오늘의 뉴스</h5>
                     </a></div>
                   <div class="card-body">
       <!--              속도 data-interval-->
-                    <div class="carousel vert slide" data-ride="carousel" data-interval="2500">
+                    <div class="carousel vert slide" data-ride="carousel" data-interval="false">
                       <div class="carousel-inner">
-                      {% for i3 in table |batch(3) %}
+                      {% for i3 in table |batch(5) %}
                           {% if loop.index0 == 0 %}
                             <div class="carousel-item active">
                             {% else %}
                             <div class="carousel-item">
                             {% endif %}
-                          <ul class="timeline">
+                          <ul class="timeline" style="padding:0;">
                           {% for i in i3 %}
-                            <li>
-                                <a target="_blank" href={{ i.link }}>{{ i.title }}</a>
-                                <a href="#" class="float-right">{{ i.date }}</a>
-                                <p class="article">{{ i.content[:200] }}...</p>
-                            </li>
-                            <hr>
+<!--                            <li>-->
+<!--                                <a target="_blank" href={{ i.link }}>{{ i.title }}</a>-->
+<!--                                <a href="#" class="float-right">{{ i.date }}</a>-->
+<!--                                <p class="article">{{ i.content[:200] }}...</p>-->
+<!--                            </li>-->
+                              <div id="accordion">
+                              <div class="card">
+                                <div class="card-header py-1" id="headingOne">
+                                  <h5 class="mb-0" style="margin:0px; width:calc(100% - 94px); display:inline;">
+
+                                    <button class="btn btn-link px-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width:calc(100% - 90px);">
+                                      <a style="float:left;">{{ i.title }}</a>
+                                      <a style="float:right;"> - {{ i.date }}</a>
+                                      <button class="btn btn-primary btn-sm" type="button" value="분석하기" style="float:right; margin-top:4px;">분석하기</button>
+                                    </button>
+
+                                  </h5>
+
+                                </div>
+
+
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                  <div class="card-body">
+                                    {{ i.content }}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+<!--                            <hr>-->
                           {% endfor %}
                           </ul>
                         </div>
@@ -134,9 +158,6 @@
                       </div>
                     </div>
                   </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
                   </div>
                 </div>
               </div>
