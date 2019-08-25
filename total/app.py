@@ -17,10 +17,6 @@ def hello_world():
 def hello_world2():
     return render_template('2introduce.html')
 
-@app.route('/3p/')
-def hello_world3():
-    return render_template('3charts.html')
-
 @app.route('/4p/')
 def hello_world4():
     return render_template('4tables.html')

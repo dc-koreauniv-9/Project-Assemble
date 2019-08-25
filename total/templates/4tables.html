@@ -54,17 +54,18 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
+       <!-- Heading -->
       <div class="sidebar-heading">
-        Introduce
+        Search
       </div>
 
       <!-- Nav Item - 설명 -->
       <li class="nav-item">
         <a class="nav-link" href="/2p">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>모델/분석 설명</span></a>
+          <span>DB 검색</span></a>
       </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -73,14 +74,6 @@
       <div class="sidebar-heading">
         Analysis
       </div>
-
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="/3p">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>기사 및 사설 성향 분석</span></a>
-      </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -133,7 +126,49 @@
                </div>
 
              </form>
+                    <script
+                src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous">
+              </script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></link>
+              <script type="text/javascript">
+              $(function() {
+                  var ctx1 = $('#pieChart');
+                  var myPieChart = new Chart(ctx1, {
+                      type: 'pie',
+                      data: {
+                          labels: ['보수', '진보'],
+                          datasets: [{
+                              label: '', data: [70, 30],
+                              backgroundColor: [
+                                  'rgba(255, 99, 132, 0.2)',
+                                  'rgba(54, 162, 235, 0.2)'],
+                              borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)'],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          legend: {
+                              display:false
+                          },
+                          title: {
+                            display: true,
+                      text: '현재 클릭하신 기사의 정치 성향 비율입니다.',
+                      position: 'top',
+                      fontSize: 30,
+                      padding: 20
+                          },
 
+                      }
+                  })
+              })
+              </script>
+
+          <canvas id="pieChart"></canvas>
 
         </div>
         <!-- /.container-fluid -->
