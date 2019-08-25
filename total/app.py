@@ -13,12 +13,20 @@ def hello_world():
     table = Table2.query.limit(9).all()
     return render_template('1index.html', table=table)
 
-@app.route('/2p/')
+@app.route('/2_1p/')
 def hello_world2():
-    return render_template('2introduce.html')
+    return render_template('2_1news.html')
+
+@app.route('/2_2p/')
+def hello_world3():
+    return render_template('2_2TheMinJoo.html')
+
+@app.route('/2_3p/')
+def hello_world4():
+    return render_template('2_3LibertyKorea.html')
 
 @app.route('/4p/')
-def hello_world4():
+def hello_world5():
     return render_template('4tables.html')
 
 class Table2(db.Model):

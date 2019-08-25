@@ -55,11 +55,20 @@
         Search
       </div>
 
-      <!-- Nav Item - 설명 -->
+      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="/2p">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>DB 검색</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>DB검색</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Data Base:</h6>
+            <a class="collapse-item" href="/2_1p">NewsData</a>
+            <a class="collapse-item" href="/2_2p">TheMinJoo</a>
+            <a class="collapse-item" href="/2_3p">LiberyKorea</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->
@@ -448,7 +457,7 @@
         </div>
       </footer>
       <!-- End of Footer -->
-
+      </div>
     </div>
     <!-- End of Content Wrapper -->
 
@@ -479,19 +488,19 @@
   <script src="{{url_for('static',filename='js/demo/chart-pie-demo.js')}}"></script>
 
 
-    <script>
-      $.get("/static/data.json").done(function(d) {
-          var ul = $("ul.timeline");
-          console.log(ul);
-          for (i=0; i<d.length; i++) {
-              li = document.createElement("li");
-              li.append("<a>"+d[i]["header"]["title"]+"</a>");
-              li.append("<p>"+d[i].article+"</p>");
-              ul.append(li)
-              console.log(d[i]);
-          }
-      });
-    </script>
+  <script>
+    $.get("/static/data.json").done(function(d) {
+        var ul = $("ul.timeline");
+        console.log(ul);
+        for (i=0; i<d.length; i++) {
+            li = document.createElement("li");
+            li.append("<a>"+d[i]["header"]["title"]+"</a>");
+            li.append("<p>"+d[i].article+"</p>");
+            ul.append(li)
+            console.log(d[i]);
+        }
+    });
+  </script>
 </body>
 
 </html>
