@@ -129,22 +129,24 @@
                <div id="result"> </div>
 
                <div class="form-group mx-sm-3" style="margin-top:16px;">
-                  <label for="try-search"> 분석 결과</label>
-                  <textarea type="text" class="form-control" placeholder="입력하신 글의 정치 성향은 보수 성향 입니다" rows="10"></textarea>
+                 <label for="try-search"> 분석 결과</label>
+                 <div style>
+                 <textarea type="text" class="form-control" placeholder="입력하신 글의 정치 성향은 보수 성향 입니다" style="width:50%;" rows="10"></textarea>
+                 </div>
 
                  <script
-                src="https://code.jquery.com/jquery-3.4.1.min.js"
-                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-                crossorigin="anonymous">
-              </script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></link>
-              <script type="text/javascript">
-              $(function() {
-                  var ctx1 = $('#pieChart');
-                  var myPieChart = new Chart(ctx1, {
-                      type: 'pie',
-                      data: {
+                   src="https://code.jquery.com/jquery-3.4.1.min.js"
+                   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                   crossorigin="anonymous">
+                 </script>
+                 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></link>
+                 <script type="text/javascript">
+                   $(function() {
+                   var ctx1 = $('#pieChart');
+                   var myPieChart = new Chart(ctx1, {
+                     type: 'pie',
+                     data: {
                           labels: ['보수', '진보'],
                           datasets: [{
                               label: '', data: [70, 30],
@@ -163,16 +165,16 @@
                           },
                           title: {
                             display: true,
-                      text: '정치 성향 비율',
-                      position: 'top',
-                      fontSize: 30,
-                      padding: 20
+                            text: '정치 성향 비율',
+                            position: 'top',
+                            fontSize: 30,
+                            padding: 20
                           },
 
-                      }
-                  })
-              })
-              </script>
+                       }
+                     })
+                    })
+                 </script>
 
           <canvas id="pieChart"></canvas>
                </div>
