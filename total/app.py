@@ -27,7 +27,7 @@ def hello_world():
         print(prob_article, most_polarized)
         return json.dumps({'predicted': prob_article, 'most_polarized': most_polarized})
 
-    return render_template('1index.html', table=rows)
+    return render_template('1index.html', table=rows, predicted=predicted)
 
 @app.route('/2_1p/')
 def hello_world2():
