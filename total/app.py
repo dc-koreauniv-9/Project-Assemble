@@ -24,7 +24,8 @@ def hello_world():
         classifier = W2V_LR()
         prob_article = list(classifier.predict_article(rows[idx]["content"])[0])
         most_polarized = list(classifier.predict_sentences(rows[idx]["content"]))
-        print(prob_article, most_polarized)
+        print(prob_article)
+        print(most_polarized)
         return json.dumps({'predicted': prob_article}) #, 'most_polarized': most_polarized})
 
     return render_template('1index.html', table=rows, predicted=predicted)
@@ -34,7 +35,7 @@ def hello_world2():
     conn = sqlite3.connect('naver_news.db')
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    c.execute("select * from table2 where id< 1001")
+    c.execute("select * from table2 where id< 101")
     rows = c.fetchall()
     return render_template('2_1news.html',rows = rows)
 
@@ -43,7 +44,7 @@ def hello_world3():
     conn = sqlite3.connect('TheMinJoo.db')
     conn.row_factory = sqlite3.Row
     c1 = conn.cursor()
-    c1.execute("select * from table1 where id<1001")
+    c1.execute("select * from table1 where id<101")
     rows = c1.fetchall()
     return render_template('2_2TheMinJoo.html',rows = rows)
 
@@ -52,7 +53,7 @@ def hello_world4():
     conn = sqlite3.connect('libertykorea0813.db')
     conn.row_factory = sqlite3.Row
     c2 = conn.cursor()
-    c2.execute("select * from table1 where id<1001")
+    c2.execute("select * from table1 where id<101")
     rows = c2.fetchall()
     return render_template('2_3LibertyKorea.html',rows = rows)
 
