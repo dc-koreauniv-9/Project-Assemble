@@ -4,6 +4,7 @@ from string import punctuation
 from konlpy.tag import Okt
 from functools import reduce
 import numpy as np
+from gensim.models import Word2Vec
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.linear_model import LogisticRegression
 
@@ -11,7 +12,7 @@ from sklearn.linear_model import LogisticRegression
 
 class W2V_LR():
     def __init__(self):
-        with open("./model52_fit.pkl", "rb") as fp:  #
+        with open("./tmp_model1", "rb") as fp:  #
             self.model = pickle.load(fp)
         with open("./w2v_model52", "rb") as fp:  #
             self.w2v_model = pickle.load(fp)
@@ -19,7 +20,7 @@ class W2V_LR():
 
     def predict_article(self, news):
         data = [_[0] for _ in self.okt.pos(news) if _[1] == "Noun"]
-        predicted = self.model.predict_proba(w2v_corpus(data))
+        predicted = self.model.predict_proba(self.w2v_corpus(data))
 
         return predicted
 
