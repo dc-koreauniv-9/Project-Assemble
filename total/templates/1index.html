@@ -1,294 +1,246 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Political neutral reader</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="{{url_for('static',filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="{{url_for('static',filename='css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Political neutral reader</title>
+<!-- Custom fonts for this template-->
+<link href="{{url_for('static',filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="{{url_for('static',filename='css/sb-admin-2.min.css')}}" rel="stylesheet">
 </head>
-
 <body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+	<!-- Sidebar -->
+	<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		<!-- Sidebar - Brand -->
+		<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/1p">
+		<div class="sidebar-brand-icon rotate-n-15">
+			<i class="fas fa-laugh-wink"></i>
+		</div>
+		<div class="sidebar-brand-text mx-3">
+			 정치 오뚜기 <sup>3Sec</sup>
+		</div>
+		</a>
+		<!-- Divider -->
+		<hr class="sidebar-divider my-0">
+		<!-- Nav Item - Dashboard -->
+		<li class="nav-item active">
+		<a class="nav-link" href="/1p">
+		<i class="fas fa-fw fa-tachometer-alt"></i>
+		<span>Dashboard</span>
+		</a>
+		</li>
+		<!-- Divider -->
+		<hr class="sidebar-divider">
+		<!-- Heading -->
+		<div class="sidebar-heading">
+			 Search
+		</div>
+		<!-- Nav Item - Utilities Collapse Menu -->
+		<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+		<i class="fas fa-fw fa-wrench"></i>
+		<span>DB검색</span>
+		</a>
+		<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">Data Base:</h6>
+				<a class="collapse-item" href="/2_1p">NewsData</a>
+				<a class="collapse-item" href="/2_2p">TheMinJoo</a>
+				<a class="collapse-item" href="/2_3p">LiberyKorea</a>
+			</div>
+		</div>
+		</li>
+		<!-- Divider -->
+		<hr class="sidebar-divider">
+		<!-- Heading -->
+		<div class="sidebar-heading">
+			 Analysis
+		</div>
+		<!-- Nav Item - Tables -->
+		<li class="nav-item">
+		<a class="nav-link" href="/4p">
+		<i class="fas fa-fw fa-table"></i>
+		<span>개인 글 성향 분석</span></a>
+		</li>
+		<!-- Divider -->
+		<hr class="sidebar-divider d-none d-md-block">
+	</ul>
+	<!-- End of Sidebar -->
+	<!-- Content Wrapper -->
+	<div id="content-wrapper" class="d-flex flex-column">
+		<div id="content">
+			<div class="container-fluid p-3">
+				<!-- Content Row -->
+				<div class="row">
+					<!-- 뉴스기사들-->
+					<!--					<div class="card board-danger golge my-4 p-3" style="width:100%;">-->
+					<div class="card border-left-primary shadow h-100 m-2" style="width:calc(70% - 30px);">
+						<div class="card-body p-0">
+							<div class="row no-gutters align-items-center">
+								<div class="card-header py-1" style="width:100%;">
+									<a href="anasayfa.html" class="isteColor">
+									<h5 class="text-left m-2" style="font-weight: bold;">오늘의 뉴스</h5>
+									</a>
+								</div>
+								<div class="card-body">
+									<!--                속도 data-interval-->
+									<div class="carousel vert slide" data-ride="carousel" data-interval="false">
+										<div class="carousel-inner">
+											 {% for i3 in table |batch(10) %} {% if loop.index0 == 0 %}
+											<div class="carousel-item active">
+												 {% else %}
+												<div class="carousel-item">
+													 {% endif %}
+													<ul class="timeline" style="padding:0;">
+														 {% for i in i3 %}
+														<div id="accordion">
+															<div class="card">
+																<div class="card-header py-1" id="headingOne">
+																	<h5 class="mb-0" style="margin:0px; width:calc(100% - 94px); display:inline;">
+																	<button class="btn btn-link px-0" data-toggle="collapse" data-target="#collapseOne{{ loop.index }}" aria-expanded="true" aria-controls="collapseOne" style="width:calc(100% - 90px);">
+																	<a style="float:left;">{{ i.title }}</a>
+																	<a style="float:right;">{{ i.date }}</a>
+																	<button class="btn btn-primary btn-sm" type="button" value="분석하기" style="float:right; margin-top:4px;">분석하기</button>
+																	</button>
+																	</h5>
+																</div>
+																<div id="collapseOne{{ loop.index }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+																	<div class="card-body">
+																		 {{ i.content }}
+																	</div>
+																</div>
+															</div>
+														</div>
+														 {% endfor %}
+													</ul>
+												</div>
+												 {% endfor %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/1p">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">정치 오뚜기 <sup>3Sec</sup></div>
-
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="/1p">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Search
-      </div>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>DB검색</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Data Base:</h6>
-            <a class="collapse-item" href="/2_1p">NewsData</a>
-            <a class="collapse-item" href="/2_2p">TheMinJoo</a>
-            <a class="collapse-item" href="/2_3p">LiberyKorea</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Analysis
-      </div>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="/4p">
-          <i class="fas fa-fw fa-table"></i>
-          <span>개인 글 성향 분석</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-    </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-      <div id="content">
-
-        <div class="container-fluid">
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- 뉴스기사들-->
-            <div class="card board-danger golge my-4" style="width:100%;">
-              <div class="card border-left-primary shadow h-100 py-0">
-                <div class="card-body p-0">
-                  <div class="row no-gutters align-items-center">
-                    <div class="card-header py-1" style="width:100%;"><a href="anasayfa.html" class="isteColor">
-                      <h5 class="text-left m-2" style="font-weight: bold; ">오늘의 뉴스</h5>
-                    </a></div>
-                  <div class="card-body">
-      <!--              속도 data-interval-->
-                    <div class="carousel vert slide" data-ride="carousel" data-interval="false">
-                      <div class="carousel-inner">
-                      {% for i3 in table |batch(10) %}
-                          {% if loop.index0 == 0 %}
-                            <div class="carousel-item active">
-                            {% else %}
-                            <div class="carousel-item">
-                            {% endif %}
-                          <ul class="timeline" style="padding:0;">
-                          {% for i in i3 %}
-                              <div id="accordion">
-                              <div class="card">
-                                <div class="card-header py-1" id="headingOne">
-                                  <h5 class="mb-0" style="margin:0px; width:calc(100% - 94px); display:inline;">
-
-                                    <button class="btn btn-link px-0" data-toggle="collapse" data-target="#collapseOne{{ loop.index }}" aria-expanded="true" aria-controls="collapseOne" style="width:calc(100% - 90px);">
-                                      <a style="float:left;">{{ i.title }}</a>
-                                      <a style="float:right;">{{ i.date }}</a>
-                                      <button class="btn btn-primary btn-sm" type="button" value="분석하기" style="float:right; margin-top:4px;">분석하기</button>
-                                    </button>
-
-                                  </h5>
-
-                                </div>
-
-
-
-                                <div id="collapseOne{{ loop.index }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                  <div class="card-body">
-                                    {{ i.content }}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-<!--                            <hr>-->
-                          {% endfor %}
-                          </ul>
-                        </div>
-                      {% endfor %}
-                      </div>
+					    <!-- 워드 클라우드 -->
+					    <!--                    <div class="col" style="width:400px; margin-right:0px;">-->
+					    <div class="card shadow my-2" style="width:30%; float:right;">
+					    	<div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+                              <a href="anasayfa.html" class="isteColor">
+					    		<h5 class="text-left m-2" style="font-weight: bold;">워드 클라우드</h5>
+                              </a>
+					    	</div>
+					    	<!-- Card Body -->
+					    	<div class="card-body" style="vertical-align: middle;">
+					    		<div class="chart-area">
+					    			<canvas id="myAreaChart"></canvas>
+					    		</div>
+					    	</div>
+					    </div>
                     </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          <!-- 분석결과 표시 부분 -->
-         <div class="container-fluid p-0" id="analysis report">
-             <h2> 분석 결과 </h2>
-
-          <div class="row mb-3">
-                <!-- 중요 문장 표시? -->
-                <div class="col" style="width:100%;">
-                    <div class="card shadow">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">기여도 높은 문장?</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-text">
-                                흐으으으으아아아아아아아아아악
+				</div>
+			</div>
+			<!-- 분석결과 표시 부분 -->
+			<div class="container-fluid p-3" id="analysis_report">
+				<h2> 분석 결과 </h2>
+				<div class="row mb-3">
+					<!-- 중요 문장 표시? -->
+					<div class="col" style="width:50%; padding-right:8px;">
+						<div class="card shadow" style="height:100%;">
+							<div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+                                <a href="anasayfa.html" class="isteColor">
+					    		  <h5 class="text-left m-2" style="font-weight: bold;">기여도 높은 문장?</h5>
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-          </div>
-
-          <div class="row mb-3">
-            <!-- 워드 클라우드 -->
-            <div class="col" style="padding-right:8px; width:50%;">
-              <div class="card shadow">
-
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">워드 클라우드</h6>
-
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 성향 그래프 -->
-            <div class="col" style="padding-left:8px; width:50%;">
-              <div class="card shadow">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">성향 그래프</h6>
-
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-         </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy;Group Nine OTTOGI 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="{{url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="{{url_for('static',filename='js/sb-admin-2.min.js')}}"></script>
-
-  <!-- Page level plugins -->
-  <script src="{{url_for('static',filename='vendor/chart.js/Chart.min.js')}}"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{{url_for('static',filename='js/demo/chart-area-demo.js')}}"></script>
-  <script src="{{url_for('static',filename='js/demo/chart-pie-demo.js')}}"></script>
-
-
-    <script>
-      $.get("/static/data.json").done(function(d) {
-          var data =
-          var ul = $("ul.timeline");
-          console.log(ul);
-          for (i=0; i<d.length; i++) {
-              li = document.createElement("li");
-              li.append("<a>"+d[i]["header"]["title"]+"</a>");
-              li.append("<p>"+d[i].article+"</p>");
-              ul.append(li)
-              console.log(d[i]);
-          }
-          // $("ul.timeline")
-          // console.log(d);
-      });
-    </script>
+							<div class="card-body">
+								<div class="card-text">
+									 흐으으으으아아아아아아아아아악
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 성향 그래프 -->
+					<div class="col" style="padding-left:8px; width:50%;">
+						<div class="card shadow">
+							<!-- Card Header - Dropdown -->
+							<div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+                              <a href="anasayfa.html" class="isteColor">
+					    		<h5 class="text-left m-2" style="font-weight: bold;">성향 그래프</h5>
+                              </a>
+							</div>
+							<!-- Card Body -->
+							<div class="card-body">
+								<div class="chart-pie pt-4 pb-2">
+									<canvas id="myPieChart"></canvas>
+								</div>
+								<div class="mt-4 text-center small">
+									<span class="mr-2">
+									<i class="fas fa-circle text-primary"></i> Direct </span>
+									<span class="mr-2">
+									<i class="fas fa-circle text-success"></i> Social </span>
+									<span class="mr-2">
+									<i class="fas fa-circle text-info"></i> Referral </span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--				</div>-->
+			<!-- /.container-fluid -->
+			<footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright &copy;Group Nine OTTOGI 2019</span>
+				</div>
+			</div>
+			</footer>
+		</div>
+		<!-- End of Main Content -->
+		<!-- Footer -->
+		<!-- End of Footer -->
+	</div>
+	<!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+<!-- Bootstrap core JavaScript-->
+<script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{url_for('static',filename='js/sb-admin-2.min.js')}}"></script>
+<!-- Page level plugins -->
+<script src="{{url_for('static',filename='vendor/chart.js/Chart.min.js')}}"></script>
+<!-- Page level custom scripts -->
+<script src="{{url_for('static',filename='js/demo/chart-area-demo.js')}}"></script>
+<script src="{{url_for('static',filename='js/demo/chart-pie-demo.js')}}"></script>
+<script>
+    $.get("/static/data.json").done(function(d) {
+        var data =
+        var ul = $("ul.timeline");
+        console.log(ul);
+        for (i=0; i<d.length; i++) {
+            li = document.createElement("li");
+            li.append("<a>"+d[i]["header"]["title"]+"</a>");
+            li.append("<p>"+d[i].article+"</p>");
+            ul.append(li)
+            console.log(d[i]);
+        }
+        // $("ul.timeline")
+        // console.log(d);
+    });
+  </script>
 </body>
-
 </html>
