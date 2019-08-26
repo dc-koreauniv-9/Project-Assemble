@@ -1,20 +1,32 @@
-from flask import Flask,render_template
+from flask import Flask,render_template, request
 #from flask_sqlalchemy import SQLAlchemy
 import sqlite3
+import json
+from Model import W2V_LR
 from flask import g
 import os
 
 app = Flask(__name__)
 
 
-@app.route('/')
-@app.route('/1p/')
+@app.route('/', methods=['POST', 'GET'])
+@app.route('/1p/', methods=['POST', 'GET'])
 def hello_world():
     conn = sqlite3.connect('naver_news.db')
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
     c.execute("select * from table2 where id< 10")
     rows = c.fetchall()
+    predicted = [50, 50]
+    if request.method == 'POST':
+        print(request.data)
+        idx = int(request.data.decode("utf-8").split('=')[1])
+        classifier = W2V_LR()
+        prob_article = list(classifier.predict_article(rows[idx].content)[0])
+        most_polarized = list(classifier.predict_sentences(rows[idx].content))
+        print(prob_article, most_polarized)
+        return json.dumps({'predicted': prob_article, 'most_polarized': most_polarized})
+
     return render_template('1index.html', table=rows)
 
 @app.route('/2_1p/')
