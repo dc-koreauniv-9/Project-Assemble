@@ -22,10 +22,10 @@ def hello_world():
         print(request.data)
         idx = int(request.data.decode("utf-8").split('=')[1])
         classifier = W2V_LR()
-        prob_article = list(classifier.predict_article(rows[idx].content)[0])
-        most_polarized = list(classifier.predict_sentences(rows[idx].content))
-        print(prob_article, most_polarized)
-        return json.dumps({'predicted': prob_article, 'most_polarized': most_polarized})
+        prob_article = list(classifier.predict_article(rows[idx]["content"])[0])
+        #most_polarized = list(classifier.predict_sentences(rows[idx]["content"]))
+        #print(prob_article, most_polarized)
+        return json.dumps({'predicted': prob_article}) #, 'most_polarized': most_polarized})
 
     return render_template('1index.html', table=rows, predicted=predicted)
 
