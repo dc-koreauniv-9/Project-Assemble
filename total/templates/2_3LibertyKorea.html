@@ -45,7 +45,7 @@
 		<li class="nav-item">
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
 		<i class="fas fa-fw fa-wrench"></i>
-		<span>DB DATA</span>
+		<span>DB검색</span>
 		</a>
 		<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
@@ -90,11 +90,10 @@
 										<div class="card-body p-0">
 											<div class="row no-gutters align-items-center">
 												<div class="card-header py-1" style="width:100%;">
-													<a href="#" class="isteColor">
 													<h5 class="text-left m-2" style="font-weight: bold; ">한국당 DATA</h5>
 													<div class="card-body">
 														<div class="table-responsive">
-															<table class="table table-sm table-hover">
+															<table id="LibertyKoreaData" class="table table-sm table-hover">
 															<thead>
 															<tr>
 																<th style="width: 10%">
@@ -168,5 +167,10 @@
 <script src="{{url_for('static',filename='js/demo/chart-area-demo.js')}}"></script>
 <script src="{{url_for('static',filename='js/demo/chart-pie-demo.js')}}"></script>
 <script src="{{url_for('static',filename='js/demo/chart-bar-demo.js')}}"></script>
+<script>
+  $(document).ready( function () {
+    $('#LibertyKoreaData').DataTable();
+  } );
+</script>
 </body>
 </html>
