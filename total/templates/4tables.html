@@ -11,18 +11,14 @@
 
   <title>Political neutral reader</title>
 
-  <!-- Custom fonts for this template -->
+  <!-- Custom fonts for this template-->
   <link href="{{url_for('static',filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
+  <!-- Custom styles for this template-->
   <link href="{{url_for('static',filename='css/sb-admin-2.min.css')}}" rel="stylesheet">
 
-  <!-- Custom styles for this page -->
-  <link href="{{url_for('static',filename='vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
 </head>
-
 
 <body id="page-top">
 
@@ -102,129 +98,102 @@
       <!-- Main Content -->
       <div id="content">
 
-        <!-- Topbar -->
-<!--        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">-->
-
-<!--        </nav>-->
-        <!-- End of Topbar -->
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Personal Analyze</h1>
-          <p class="mb-4">작성하신 글을 입력하면 정치 성향을 판단합니다</p>
+          <!-- Content Row -->
+          <div class="row mb-3">
+              <!-- 분석결과 표시 부분 -->
+             <div class="container-fluid p-0" id="analysis report">
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Personal Analyze</h1>
+                <p class="mb-4">
+                     작성하신 글을 입력하면 정치 성향을 판단합니다
+                </p>
+                <div class="col" style="width:100%;">
+                  <div class="card shadow">
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                          <h6 class="m-0 font-weight-bold text-primary">원하시는 내용을 입력해 주세요</h6>
+                        <div class="col-auto" style="padding-right:16px;">
+                                  <button type="submit" class="btn btn-primary" id="search" style="margin-top:10px;">분석</button>
+                        </div>
+                      </div>
 
-             <form>
+                      <form>
+                          <textarea type="text" class="form-control" placeholder="분석하실 내용을 입력해주세요." style="width:100%;" rows="10"></textarea>
+                     </form>
+                  </div>
+                </div>
+             </div>
+          </div>
 
-              <div class="form-group mx-sm-3">
-                <label for="try-search" style="padding-left:12px;">원하시는 내용을 입력해주세요.</label>
-                <textarea type="text" class="form-control" placeholder="분석하실 내용을 입력해주세요." style="width:100%;" rows="10"></textarea>
+          <div class="row mb-3">
+
+                <!-- 중요 문장 표시? -->
+                <div class="col" style="width:100%;">
+                    <div class="card shadow">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">기여도 높은 문장?</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-text">
+                                흐으으으으아아아아아아아아아악
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+          </div>
+
+          <div class="row mb-3">
+            <!-- 워드 클라우드 -->
+            <div class="col" style="padding-right:8px; width:50%;">
+              <div class="card shadow">
+
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">워드 클라우드</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="myAreaChart"></canvas>
+                  </div>
+                </div>
               </div>
+            </div>
 
-               <div class="col-auto" style="padding-left:16px;">
-                  <button type="submit" class="btn btn-primary" id="search" style="margin-top:10px;">분석</button>
-               </div>
+            <!-- 성향 그래프 -->
+<!--              -xl-6" style="width:50%;"-->
+            <div class="col" style="padding-left:8px; width:50%;">
+              <div class="card shadow">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">성향 그래프</h6>
 
-               <div id="result"> </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> Direct
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> Social
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> Referral
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--성향그래프 끝-->
 
-               <div class="form-group mx-sm-3" style="margin-top:16px;">
-                 <label for="try-search"> 분석 결과</label>
-                 <div style>
-                 <textarea type="text" class="form-control" placeholder="입력하신 글의 정치 성향은 보수 성향 입니다" style="width:50%;" rows="10"></textarea>
-                 </div>
-
-                 <script
-                   src="https://code.jquery.com/jquery-3.4.1.min.js"
-                   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-                   crossorigin="anonymous">
-                 </script>
-                 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></link>
-                 <script type="text/javascript">
-                   $(function() {
-                   var ctx1 = $('#pieChart');
-                   var myPieChart = new Chart(ctx1, {
-                     type: 'pie',
-                     data: {
-                          labels: ['보수', '진보'],
-                          datasets: [{
-                              label: '', data: [70, 30],
-                              backgroundColor: [
-                                  'rgba(255, 99, 132, 0.2)',
-                                  'rgba(54, 162, 235, 0.2)'],
-                              borderColor: [
-                                  'rgba(255, 99, 132, 1)',
-                                  'rgba(54, 162, 235, 1)'],
-                              borderWidth: 1
-                          }]
-                      },
-                      options: {
-                          legend: {
-                              display:false
-                          },
-                          title: {
-                            display: true,
-                            text: '정치 성향 비율',
-                            position: 'top',
-                            fontSize: 30,
-                            padding: 20
-                          },
-
-                       }
-                     })
-                    })
-                 </script>
-
-          <canvas id="pieChart"></canvas>
-               </div>
-
-
-
-             </form>
-                    <script
-                src="https://code.jquery.com/jquery-3.4.1.min.js"
-                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-                crossorigin="anonymous">
-              </script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></link>
-              <script type="text/javascript">
-              $(function() {
-                  var ctx1 = $('#pieChart');
-                  var myPieChart = new Chart(ctx1, {
-                      type: 'pie',
-                      data: {
-                          labels: ['보수', '진보'],
-                          datasets: [{
-                              label: '', data: [70, 30],
-                              backgroundColor: [
-                                  'rgba(255, 99, 132, 0.2)',
-                                  'rgba(54, 162, 235, 0.2)'],
-                              borderColor: [
-                                  'rgba(255, 99, 132, 1)',
-                                  'rgba(54, 162, 235, 1)'],
-                              borderWidth: 1
-                          }]
-                      },
-                      options: {
-                          legend: {
-                              display:false
-                          },
-                          title: {
-                            display: true,
-                      text: '현재 클릭하신 기사의 정치 성향 비율입니다.',
-                      position: 'top',
-                      fontSize: 30,
-                      padding: 20
-                          },
-
-                      }
-                  })
-              })
-              </script>
-
-          <canvas id="pieChart"></canvas>
+          </div>
+        <!--그래프 끝-->
 
         </div>
         <!-- /.container-fluid -->
@@ -253,6 +222,7 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+
   <!-- Bootstrap core JavaScript-->
   <script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -264,11 +234,12 @@
   <script src="{{url_for('static',filename='js/sb-admin-2.min.js')}}"></script>
 
   <!-- Page level plugins -->
-  <script src="{{url_for('static',filename='vendor/datatables/jquery.dataTables.min.js')}}"></script>
-  <script src="{{url_for('static',filename='vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+  <script src="{{url_for('static',filename='vendor/chart.js/Chart.min.js')}}"></script>
 
   <!-- Page level custom scripts -->
-  <script src="{{url_for('static',filename='js/demo/datatables-demo.js')}}"></script>
+  <script src="{{url_for('static',filename='js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{url_for('static',filename='js/demo/chart-pie-demo.js')}}"></script>
+
 
 </body>
 
