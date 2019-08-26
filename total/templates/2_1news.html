@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="kr">
 
 <head>
   <meta charset="utf-8">
@@ -102,82 +102,47 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">DB Search</h1>
-          <p class="mb-4">검색어를 입력하면 DB에서 관련 content를 찾습니다.</p>
+          <p class="mb-4">News DATA</p>
 
         </div>
-
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">NewsData</h6>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="newsTable" width="100%" cellspacing="0">
-                <thead>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"> Simple Table</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                       <thead>
                 <tr>
-                  <th>Number</th>
-                  <th>Date</th>
+                  <th>id</th>
                   <th>title</th>
-                  <th>content</th>
+                  <th>date</th>
                 </tr>
                 </thead>
-                <tfoot>
-                <tr>
-                  <th>Number</th>
-                  <th>Date</th>
-                  <th>title</th>
-                  <th>content</th>
-                </tr>
-                </tfoot>
                 <tbody>
+                {% for row in rows %}
                 <tr>
-                  <td>1</td>
-                  <td>2011/04/25</td>
-                  <td>Edinburgh</td>
-                  <td>Tiger Nixon</td>
+                  <td>{{row.id}}</td>
+                  <td>{{row.title}}</td>
+                  <td>{{row.date}}</td>
+
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>2011/07/25</td>
-                  <td>Accountant</td>
-                  <td>Garrett Winters</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>2009/01/12</td>
-                  <td>Junior Technical Author</td>
-                  <td>San Francisco</td>
-                </tr>
+                {% endfor %}
                 </tbody>
-              </table>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy;Group Nine OTTOGI 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
+      </div>
     </div>
-    <!-- End of Content Wrapper -->
-
   </div>
-  <!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
 
 
   <!-- Bootstrap core JavaScript-->
@@ -203,14 +168,6 @@
   <script src="{{url_for('static',filename='js/demo/chart-area-demo.js')}}"></script>
   <script src="{{url_for('static',filename='js/demo/chart-pie-demo.js')}}"></script>
   <script src="{{url_for('static',filename='js/demo/chart-bar-demo.js')}}"></script>
-
-  <script>
-    $(document).ready( function () {
-
-        $('#newsTable').DataTable();
-
-    } );
-  </script>
 
 </body>
 
