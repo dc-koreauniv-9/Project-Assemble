@@ -253,7 +253,20 @@
 					$('myPieChart').empty();
 
 					draw_piechart(Obj['predicted']);
-				}
+					var step;
+					let num = Obj['most_polarized'].length
+					console.log(num)
+					var temp = ""
+					for (step = 0; step < num; step++){
+						if (step == num-1){
+							temp = temp.concat(Obj['most_polarized'][step], '\n')
+						} else{
+							temp = temp.concat(Obj['most_polarized'][step], ',\n')
+						}
+	
+					}
+					document.getElementById("polarized").innerHTML = temp
+			}
 		})
 	}
 </script>
