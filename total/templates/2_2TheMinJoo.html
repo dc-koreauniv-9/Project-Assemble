@@ -24,7 +24,7 @@
 			<i class="fas fa-laugh-wink"></i>
 		</div>
 		<div class="sidebar-brand-text mx-3">
-			정치 오뚜기 <sup>3Sec</sup>
+			 정치 오뚜기 <sup>3Sec</sup>
 		</div>
 		</a>
 		<!-- Divider -->
@@ -98,13 +98,13 @@
 															<thead>
 															<tr>
 																<th style="width: 10%">
-																	id
+																	 id
 																</th>
 																<th style="width: 60%">
-																	title
+																	 title
 																</th>
 																<th style="width: 30%">
-																	date
+																	 date
 																</th>
 															</tr>
 															</thead>
@@ -112,13 +112,13 @@
 															 {% for row in rows %}
 															<tr>
 																<td>
-																	{{row.id}}
+																	 {{row.id}}
 																</td>
 																<td>
-																	{{row.title}}
+																	 {{row.title}}
 																</td>
 																<td>
-																	{{row.content_date}}
+																	 {{row.content_date}}
 																</td>
 															</tr>
 															 {% endfor %}
@@ -137,8 +137,21 @@
 				</div>
 			</div>
 		</div>
+		<!-- Footer -->
+		<footer class="sticky-footer bg-white">
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<span>Copyright &copy;Group Nine OTTOGI 2019</span>
+			</div>
+		</div>
+		</footer>
+		<!-- End of Footer -->
 	</div>
 </div>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
 <!-- Bootstrap core JavaScript-->
 <script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
