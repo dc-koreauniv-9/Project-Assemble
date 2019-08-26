@@ -1,43 +1,52 @@
 from flask import Flask,render_template
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
+import sqlite3
+from flask import g
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///naver_news.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
 
 
 @app.route('/')
 @app.route('/1p/')
 def hello_world():
-    table = Table2.query.limit(9).all()
-    return render_template('1index.html', table=table)
+    conn = sqlite3.connect('naver_news.db')
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    c.execute("select * from table2 where id< 10")
+    rows = c.fetchall()
+    return render_template('1index.html', table=rows)
 
 @app.route('/2_1p/')
 def hello_world2():
-    return render_template('2_1news.html')
+    conn = sqlite3.connect('naver_news.db')
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    c.execute("select * from table2 where id< 101")
+    rows = c.fetchall()
+    return render_template('2_1news.html',rows = rows)
 
 @app.route('/2_2p/')
 def hello_world3():
-    return render_template('2_2TheMinJoo.html')
+    conn = sqlite3.connect('TheMinJoo.db')
+    conn.row_factory = sqlite3.Row
+    c1 = conn.cursor()
+    c1.execute("select * from table1 where id<101")
+    rows = c1.fetchall()
+    return render_template('2_2TheMinJoo.html',rows = rows)
 
 @app.route('/2_3p/')
 def hello_world4():
-    return render_template('2_3LibertyKorea.html')
+    conn = sqlite3.connect('libertykorea0813.db')
+    conn.row_factory = sqlite3.Row
+    c2 = conn.cursor()
+    c2.execute("select * from table1 where id<101")
+    rows = c2.fetchall()
+    return render_template('2_3LibertyKorea.html',rows = rows)
 
 @app.route('/4p/')
 def hello_world5():
     return render_template('4tables.html')
-
-class Table2(db.Model):
-    __tablename__ = 'table2'
-
-    id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.Text, nullable=False)
-    title = db.Column(db.Text, nullable=False)
-    content = db.Column(db.Text, nullable=False)
-    link = db.Column(db.Text, nullable=False)
-
 
 
 
