@@ -140,7 +140,7 @@
                                 <div class="card-header py-1" id="headingOne">
                                   <h5 class="mb-0" style="margin:0px; width:calc(100% - 94px); display:inline;">
 
-                                    <button class="btn btn-link px-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width:calc(100% - 90px);">
+                                    <button class="btn btn-link px-0" data-toggle="collapse" data-target="#collapseOne{{ loop.index }}" aria-expanded="true" aria-controls="collapseOne" style="width:calc(100% - 90px);">
                                       <a style="float:left;">{{ i.title }}</a>
                                       <a style="float:right;"> - {{ i.date }}</a>
                                       <button class="btn btn-primary btn-sm" type="button" value="분석하기" style="float:right; margin-top:4px;">분석하기</button>
@@ -152,7 +152,7 @@
 
 
 
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div id="collapseOne{{ loop.index }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                   <div class="card-body">
                                     {{ i.content }}
                                   </div>
@@ -261,7 +261,7 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                   <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
@@ -289,7 +289,7 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
                   <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
