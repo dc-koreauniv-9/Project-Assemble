@@ -59,7 +59,8 @@ def hello_world4():
 @app.route('/4p/', methods=['POST', 'GET'])
 def hello_world5():
     if request.method == 'POST':
-        text = request.data.decode("utf-8")
+        text = request.data.split('=')[1]
+        print(text)
         classifier = W2V_LR()
         prob_text = list(classifier.predict_article(text)[0])
         most_polarized = list(classifier.predict_sentences(text))

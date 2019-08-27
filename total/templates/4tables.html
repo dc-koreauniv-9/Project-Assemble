@@ -273,7 +273,7 @@
 	    var text = document.getElementById("txtdata").value;
 			$.ajax({
 				url: '/4p/',
-				contentType: 'text',
+                contentType: "text; charset=UTF-8",
 				type: 'post',
 				data: {
 					'content': text
