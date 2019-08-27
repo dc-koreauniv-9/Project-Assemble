@@ -56,7 +56,7 @@ def hello_world4():
     return render_template('2_3LibertyKorea.html',rows = rows)
 
 @app.route('/4p/', methods=['POST', 'GET'])
-def hello_world4():
+def hello_world5():
     if request.method == 'POST':
         text = request.data.decode("utf-8")
         classifier = W2V_LR()
