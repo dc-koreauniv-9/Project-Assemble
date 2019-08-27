@@ -273,11 +273,9 @@
 	    var text = document.getElementById("txtdata").value;
 			$.ajax({
 				url: '/4p/',
-                contentType: "text; charset=UTF-8",
+                contentType: "text",
 				type: 'post',
-				data: {
-					'content': text
-				},
+				data: text,
 				success: function(res) {
                     var Obj = JSON.parse(res)
                     $('myPieChart').empty();
