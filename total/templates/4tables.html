@@ -279,7 +279,6 @@
 					'content': text
 				},
 				success: function(res) {
-                    alert("success");
                     var Obj = JSON.parse(res)
                     $('myPieChart').empty();
                     myPieChart.data["datasets"][0]["data"] = Obj["predicted"]
