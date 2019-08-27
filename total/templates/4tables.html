@@ -66,7 +66,7 @@
             <h6 class="collapse-header">Data Base:</h6>
             <a class="collapse-item" href="/2_1p">NewsData</a>
             <a class="collapse-item" href="/2_2p">TheMinJoo</a>
-            <a class="collapse-item" href="/2_3p">LiberyKorea</a>
+            <a class="collapse-item" href="/2_3p">LibertyKorea</a>
           </div>
         </div>
       </li>
@@ -112,10 +112,10 @@
                 </p>
                 <div class="col" style="width:100%;">
                   <div class="card shadow">
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <div class="card-header d-flex flex-row align-items-center justify-content-between">
                           <h6 class="m-0 font-weight-bold text-primary">원하시는 내용을 입력해 주세요</h6>
-                        <div class="col-auto" style="padding-right:16px;">
-                            <button type="button" onclick="analysis_clicked();" class="btn btn-primary" id="search" style="margin-top:10px;">분석</button>
+                        <div class="col-auto p-0" style="float:right;">
+                            <button type="button" onclick="analysis_clicked();" class="btn btn-primary" id="search" style="vertical-align: middle;">분석</button>
                         </div>
                       </div>
                       <form>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="card-body">
                             <div class="card-text" id="polarized">
-                                흐으으으으아아아아아아아아아악
+
                             </div>
                         </div>
                     </div>
@@ -273,11 +273,9 @@
 	    var text = document.getElementById("txtdata").value;
 			$.ajax({
 				url: '/4p/',
-				contentType: 'text',
+                contentType: "text",
 				type: 'post',
-				data: {
-					'content': text
-				},
+				data: text,
 				success: function(res) {
                     var Obj = JSON.parse(res)
                     $('myPieChart').empty();

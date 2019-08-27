@@ -1,5 +1,3 @@
-import pickle
-import joblib
 import re
 from string import punctuation
 from konlpy.tag import Okt
@@ -8,20 +6,25 @@ import numpy as np
 from gensim.models import Word2Vec
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.linear_model import LogisticRegression
+from sklearn.externals import joblib
+import pickle
+
 
 
 
 class W2V_LR():
     def __init__(self):
-        with open("./model52_fit.pkl", "rb") as fp:  #
+        with open("../model52_fit.pkl ", "rb") as fp:  #
             self.model = joblib.load(fp)
-        with open("./w2v_model52", "rb") as fp:  #
+        with open("../w2v_model52", "rb") as fp:  #
             self.w2v_model = pickle.load(fp)
         self.okt = Okt()
 
+
     def predict_article(self, news):
         data = [_[0] for _ in self.okt.pos(news) if _[1] == "Noun"]
-        predicted = self.model.predict_proba(self.w2v_corpus(data))
+        print(data)
+        predicted = self.model.predict_proba(self.w2v_corpus([data]))
 
         return predicted
 
@@ -33,7 +36,7 @@ class W2V_LR():
             if temp:
                 data.append(temp)
         predicted = self.model.predict_proba(self.w2v_corpus(data))
-        return [sentences[i].strip() for i in range(len(predicted)) if predicted[i][0] < 0.3 or predicted[i][0] > 0.7]
+        return [sentences[i].strip()+'. \n' for i in range(len(predicted)) if predicted[i][0] < 0.3 or predicted[i][0] > 0.7]
 
     def w2v_corpus(self, corpus):
         return [reduce(lambda x, y: x + y, [self.w2v_model[word] for word in doc if word in self.w2v_model]
