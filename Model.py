@@ -1,4 +1,5 @@
 import pickle
+import joblib
 import re
 from string import punctuation
 from konlpy.tag import Okt
@@ -12,8 +13,8 @@ from sklearn.linear_model import LogisticRegression
 
 class W2V_LR():
     def __init__(self):
-        with open("./tmp_model1", "rb") as fp:  #
-            self.model = pickle.load(fp)
+        with open("./model52_fit.pkl", "rb") as fp:  #
+            self.model = joblib.load(fp)
         with open("./w2v_model52", "rb") as fp:  #
             self.w2v_model = pickle.load(fp)
         self.okt = Okt()
@@ -32,8 +33,7 @@ class W2V_LR():
             if temp:
                 data.append(temp)
         predicted = self.model.predict_proba(self.w2v_corpus(data))
-        return [sentences[i] for i in range(len(predicted))] # if predicted[i][0] < 0.3 or predicted[i][0] > 0.7]
-
+        return [sentences[i].strip() for i in range(len(predicted)) if predicted[i][0] < 0.3 or predicted[i][0] > 0.7]
 
     def w2v_corpus(self, corpus):
         return [reduce(lambda x, y: x + y, [self.w2v_model[word] for word in doc if word in self.w2v_model]
