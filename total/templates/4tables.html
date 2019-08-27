@@ -115,12 +115,11 @@
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                           <h6 class="m-0 font-weight-bold text-primary">원하시는 내용을 입력해 주세요</h6>
                         <div class="col-auto" style="padding-right:16px;">
-                                  <button type="submit" class="btn btn-primary" id="search" style="margin-top:10px;">분석</button>
+                            <button type="button" onclick="analysis_clicked();" class="btn btn-primary" id="search" style="margin-top:10px;">분석</button>
                         </div>
                       </div>
-
                       <form>
-                          <textarea type="text" class="form-control" placeholder="분석하실 내용을 입력해주세요." style="width:100%;" rows="10"></textarea>
+                          <textarea id="txtdata" class="form-control" placeholder="분석하실 내용을 입력해주세요." style="width:100%;" rows="10"></textarea>
                      </form>
                   </div>
                 </div>
@@ -136,7 +135,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">기여도 높은 문장?</h6>
                         </div>
                         <div class="card-body">
-                            <div class="card-text">
+                            <div class="card-text" id="polarized">
                                 흐으으으으아아아아아아아아아악
                             </div>
                         </div>
@@ -178,13 +177,10 @@
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
+                        <i class="fas fa-circle" style="color:#36a2eb"></i> Liberal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
+                        <i class="fas fa-circle" style="color:#ff6385"></i> Conservative
                     </span>
                   </div>
                 </div>
@@ -238,8 +234,72 @@
 
   <!-- Page level custom scripts -->
   <script src="{{url_for('static',filename='js/demo/chart-area-demo.js')}}"></script>
-  <script src="{{url_for('static',filename='js/demo/chart-pie-demo.js')}}"></script>
+<script>
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+    var ctx = document.getElementById("myPieChart");
+    var myPieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+    labels: ["Conservative", "Liberal"],
+    datasets: [{
+      data: [50, 50],
+      backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
+      hoverBackgroundColor: ['rgb(210, 50, 90)', 'rgb(20, 120, 190)'],
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+    },
+    options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+    },
+    });
+</script>
+<script>
+	function analysis_clicked() {
+	    var text = document.getElementById("txtdata").value;
+			$.ajax({
+				url: '/4p/',
+				contentType: 'text',
+				type: 'post',
+				data: {
+					'content': text
+				},
+				success: function(res) {
+                    alert("success");
+                    var Obj = JSON.parse(res)
+                    $('myPieChart').empty();
+                    myPieChart.data["datasets"][0]["data"] = Obj["predicted"]
+                    myPieChart.update()
+                    var step;
+                    let num = Obj['most_polarized'].length
+                    var temp = ""
+                    for (step = 0; step < num; step++){
+                    	if (step == num-1){
+                    		temp = temp.concat(Obj['most_polarized'][step])
+                    	} else{
+                    		temp = temp.concat(Obj['most_polarized'][step], '<br>')
+                    	}
 
+                 }
+					document.getElementById("polarized").innerHTML = temp
+			}
+		})
+	}
+</script>
 
 </body>
 
