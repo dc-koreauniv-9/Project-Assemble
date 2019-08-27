@@ -15,7 +15,7 @@ def hello_world():
     conn = sqlite3.connect('naver_news.db')
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    c.execute("select * from table2 where id< 10")
+    c.execute("select * from table2 where id< 100")
     rows = c.fetchall()
     if request.method == 'POST':
         print(request.data)
@@ -25,7 +25,7 @@ def hello_world():
         most_polarized = list(classifier.predict_sentences(rows[idx]["content"]))
         print(prob_article)
         print(most_polarized)
-        return json.dumps({'predicted': prob_article}) #, 'most_polarized': most_polarized})
+        return json.dumps({'predicted': prob_article, 'most_polarized':most_polarized})
 
     return render_template('1index.html', table=rows)
 
