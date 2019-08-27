@@ -160,7 +160,7 @@
                                 </a>
                             </div>
 							<div class="card-body">
-								<div class="card-text">
+								<div id="polarized" class="card-text">
 									 흐으으으으아아아아아아아아아악
 								</div>
 							</div>
@@ -182,9 +182,9 @@
 								</div>
 								<div class="mt-4 text-center small">
 									<span class="mr-2">
-									<i class="fas fa-circle" style="color:#36a2eb"></i> Convservative </span>
+									<i class="fas fa-circle" style="color:#36a2eb"></i> 진보 </span>
 									<span class="mr-2">
-									<i class="fas fa-circle" style="color:#ff6385"></i> Liberal </span>
+									<i class="fas fa-circle" style="color:#ff6385"></i> 보수 </span>
 								</div>
 							</div>
 						</div>
@@ -259,9 +259,9 @@
 					var temp = ""
 					for (step = 0; step < num; step++){
 						if (step == num-1){
-							temp = temp.concat(Obj['most_polarized'][step], '\n')
+							temp = temp.concat(Obj['most_polarized'][step])
 						} else{
-							temp = temp.concat(Obj['most_polarized'][step], ',\n')
+							temp = temp.concat(Obj['most_polarized'][step], '<br>')
 						}
 
 					}
@@ -279,7 +279,7 @@
 	  	data: {
 		labels: ["Conservative", "Liberal"],
 		datasets: [{
-		  data: {{ predicted }},
+		  data: [50, 50],
 		  backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
 		  hoverBackgroundColor: ['rgb(210, 50, 90)', 'rgb(20, 120, 190)'],
 		  hoverBorderColor: "rgba(234, 236, 244, 1)",

@@ -17,7 +17,6 @@ def hello_world():
     c = conn.cursor()
     c.execute("select * from table2 where id< 10")
     rows = c.fetchall()
-    predicted = [50, 50]
     if request.method == 'POST':
         print(request.data)
         idx = int(request.data.decode("utf-8").split('=')[1])
@@ -27,7 +26,7 @@ def hello_world():
         print(prob_article, most_polarized)
         return json.dumps({'predicted': prob_article}) #, 'most_polarized': most_polarized})
 
-    return render_template('1index.html', table=rows, predicted=predicted)
+    return render_template('1index.html', table=rows)
 
 @app.route('/2_1p/')
 def hello_world2():
@@ -56,8 +55,16 @@ def hello_world4():
     rows = c2.fetchall()
     return render_template('2_3LibertyKorea.html',rows = rows)
 
-@app.route('/4p/')
-def hello_world5():
+@app.route('/4p/', methods=['POST', 'GET'])
+def hello_world4():
+    if request.method == 'POST':
+        text = request.data.decode("utf-8")
+        classifier = W2V_LR()
+        prob_text = list(classifier.predict_article(text)[0])
+        most_polarized = list(classifier.predict_sentences(text))
+        print(prob_text, most_polarized)
+        return json.dumps({'predicted': prob_text, 'most_polarized': most_polarized})
+
     return render_template('4tables.html')
 
 

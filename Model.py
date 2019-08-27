@@ -33,7 +33,7 @@ class W2V_LR():
             if temp:
                 data.append(temp)
         predicted = self.model.predict_proba(self.w2v_corpus(data))
-        return [sentences[i] for i in range(len(predicted)) if predicted[i][0] < 0.3 or predicted[i][0] > 0.7]
+        return [sentences[i].strip() for i in range(len(predicted)) if predicted[i][0] < 0.3 or predicted[i][0] > 0.7]
 
     def w2v_corpus(self, corpus):
         return [reduce(lambda x, y: x + y, [self.w2v_model[word] for word in doc if word in self.w2v_model]
