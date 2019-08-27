@@ -2,6 +2,7 @@ from flask import Flask,render_template, request
 #from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 import json
+import pickle
 from Model import W2V_LR
 from flask import g
 import os
@@ -68,7 +69,6 @@ def hello_world5():
 
     return render_template('4tables.html')
 
-
-
 if __name__ == '__main__':
     app.run()
+

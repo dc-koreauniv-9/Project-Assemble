@@ -1,5 +1,3 @@
-import pickle
-import joblib
 import re
 from string import punctuation
 from konlpy.tag import Okt
@@ -8,16 +6,20 @@ import numpy as np
 from gensim.models import Word2Vec
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.linear_model import LogisticRegression
+from sklearn.externals import joblib
+import pickle
+
 
 
 
 class W2V_LR():
     def __init__(self):
-        with open("./model52_fit.pkl", "rb") as fp:  #
+        with open("../model52_fit.pkl ", "rb") as fp:  #
             self.model = joblib.load(fp)
-        with open("./w2v_model52", "rb") as fp:  #
+        with open("../w2v_model52", "rb") as fp:  #
             self.w2v_model = pickle.load(fp)
         self.okt = Okt()
+
 
     def predict_article(self, news):
         data = [_[0] for _ in self.okt.pos(news) if _[1] == "Noun"]
