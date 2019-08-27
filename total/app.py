@@ -56,8 +56,16 @@ def hello_world4():
     rows = c2.fetchall()
     return render_template('2_3LibertyKorea.html',rows = rows)
 
-@app.route('/4p/')
+@app.route('/4p/', methods=['POST', 'GET'])
 def hello_world5():
+    if request.method == 'POST':
+        text = request.data.decode("utf-8")
+        classifier = W2V_LR()
+        prob_text = list(classifier.predict_article(text)[0])
+        most_polarized = list(classifier.predict_sentences(text))
+        print(prob_text, most_polarized)
+        return json.dumps({'predicted': prob_text, 'most_polarized': most_polarized})
+
     return render_template('4tables.html')
 
 
