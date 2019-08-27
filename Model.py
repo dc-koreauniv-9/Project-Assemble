@@ -14,28 +14,29 @@ import pickle
 
 class W2V_LR():
     def __init__(self):
-        with open("../model52_fit.pkl ", "rb") as fp:  #
+        with open("./tfidf_model.pkl ", "rb") as fp:  #
             self.model = joblib.load(fp)
-        with open("../w2v_model52", "rb") as fp:  #
-            self.w2v_model = pickle.load(fp)
+        with open("./tfidfv", "rb") as fp:  #
+            self.tfidfv = pickle.load(fp)
         self.okt = Okt()
 
 
     def predict_article(self, news):
         data = [_[0] for _ in self.okt.pos(news) if _[1] == "Noun"]
-        print(data)
-        predicted = self.model.predict_proba(self.w2v_corpus([data]))
+        predicted = self.model.predict_proba(self.tfidfv.transform([' '.join(data)]))
 
         return predicted
 
     def predict_sentences(self, news):
-        sentences = news.split(". ")
+        sentences = news.split('. ')
+
         data = []
         for s in sentences:
             temp = [_[0] for _ in self.okt.pos(s) if _[1] == "Noun"]
             if temp:
                 data.append(temp)
-        predicted = self.model.predict_proba(self.w2v_corpus(data))
+
+        predicted = self.model.predict_proba(self.tfidfv.transform([' '.join(i) for i in data]))
         return [sentences[i].strip()+'. \n' for i in range(len(predicted)) if predicted[i][0] < 0.3 or predicted[i][0] > 0.7]
 
     def w2v_corpus(self, corpus):
