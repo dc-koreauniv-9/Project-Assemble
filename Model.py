@@ -22,7 +22,7 @@ class W2V_LR():
     def predict_article(self, news):
         data = [_[0] for _ in self.okt.pos(news) if _[1] == "Noun"]
         print(data)
-        predicted = self.model.predict_proba(self.w2v_corpus(data))
+        predicted = self.model.predict_proba(self.w2v_corpus([data]))
 
         return predicted
 
