@@ -6,3 +6,7 @@ venv/
 .gitignore
 data_set
 *.db
+*.pkl
+tfidfv
+w2v_model52
+.ipynb_checkpoints

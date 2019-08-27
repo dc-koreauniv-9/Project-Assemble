@@ -33,7 +33,7 @@
 		<li class="nav-item active">
 		<a class="nav-link" href="/1p">
 		<i class="fas fa-fw fa-tachometer-alt"></i>
-		<span>Dashboard</span></a>
+		<span>Newsboard</span></a>
 		</li>
 		<!-- Divider -->
 		<hr class="sidebar-divider">
@@ -79,44 +79,43 @@
 			<!-- Begin Page Content -->
 			<div class="container-fluid p-3">
 				<!-- Content Row -->
-				<div class="content">
-					<div class="row mb-3">
+<!--				<div class="content">-->
+					<div class="row">
 						<!-- 분석결과 표시 부분 -->
-						<div class="card border-left-primary shadow h-100 m-2" style="width:100%;">
+						<div class="card border-left-primary shadow h-100 my-2" style="width:100%; margin-right:12px; margin-left:8px;">
 							<!-- Page Heading -->
-							<div class="card-body p-0">
-
-								<div class="card-header py-1" style="width:100%; display:inline;">
-                                    <div class="row">
-                                        <h5 class="text-left m-2" style="font-weight: bold;">Personal Analyze</h5>
-                                        <button type="button" onclick="analysis_clicked();" class="btn btn-primary" id="search" style="float:right;">분석
-                                        </button>
-								    </div>
-                                </div>
-								<div class="card-body" style="width:100%;">
-									<div class="card shadow">
-										<div class="card-header d-flex flex-row align-items-center justify-content-between">
-											<h6 class="m-0 font-weight-bold text-primary">원하시는 내용을 입력해 주세요</h6>
-
-										</div>
+<!--							<div class="card-body p-0">-->
+								<div class="row no-gutters align-items-center">
+									<div class="card-header py-1" style="width:100%;">
+										<h5 class="text-left m-2 font-weight-bold text-primary" style="width:calc(100% - 70px); display:inline;">
+										<a class="m-2" style="float:left;">Personal Analyze</a>
+										<button type="button" onclick="analysis_clicked();" class="btn btn-primary btn-sm" id="search" style="float:right; margin-top:4px;">분석하기</button>
+										</h5>
+									</div>
+									<div class="card-body p-0" style="width:100%;">
 										<form>
-											<textarea id="txtdata" class="form-control" placeholder="분석하실 내용을 입력해주세요." style="width:100%;" rows="10"></textarea>
+											<textarea id="txtdata" class="form-control" placeholder="분석하실 내용을 입력해주세요." style="width:100%; border:0; resize:none; outline:0;" rows="10"></textarea>
 										</form>
 									</div>
 								</div>
-							</div>
+<!--							</div>-->
 						</div>
 					</div>
 				</div>
+			<div class="container-fluid p-3" id="personal_analysis_report">
+				<h2> 분석 결과 </h2>
 				<div class="row mb-3">
 					<!-- 중요 문장 표시? -->
 					<div class="col" style="width:100%;">
 						<div class="card shadow">
-							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">기여도 높은 문장?</h6>
+							<div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+
+								<h5 class="text-left m-2 font-weight-bold text-primary">기여도 높은 문장</h5>
+
 							</div>
-							<div class="card-body">
+							<div class="card-body" style="min-height:100px;">
 								<div class="card-text" id="polarized">
+
 								</div>
 							</div>
 						</div>
@@ -126,8 +125,8 @@
 					<!-- 워드 클라우드 -->
 					<div class="col" style="padding-right:8px; width:50%;">
 						<div class="card shadow">
-							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">워드 클라우드</h6>
+							<div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+								<h5 class="text-left m-2 font-weight-bold text-primary">워드 클라우드</h5>
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
@@ -142,8 +141,8 @@
 					<div class="col" style="padding-left:8px; width:50%;">
 						<div class="card shadow">
 							<!-- Card Header - Dropdown -->
-							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">성향 그래프</h6>
+							<div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+								<h5 class="text-left m-2 font-weight-bold text-primary">성향 그래프</h5>
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
@@ -162,20 +161,21 @@
 					<!--성향그래프 끝-->
 				</div>
 			</div>
-        </div>	<!--그래프 끝-->
 		</div>
-		<!-- /.container-fluid -->
-	</div>
-	<!-- End of Main Content -->
-	<!-- Footer -->
-	<footer class="sticky-footer bg-white">
-	<div class="container my-auto">
-		<div class="copyright text-center my-auto">
-			<span>Copyright &copy;Group Nine OTTOGI 2019</span>
+		<!--그래프 끝-->
+		<footer class="sticky-footer bg-white">
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<span>Copyright &copy;Group Nine OTTOGI 2019</span>
+			</div>
 		</div>
+		</footer>
 	</div>
-	</footer>
-	<!-- End of Footer -->
+	<!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+<!-- Footer -->
+<!-- End of Footer -->
 </div>
 <!-- End of Content Wrapper -->
 </div>
