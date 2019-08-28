@@ -174,7 +174,9 @@
 <script src="{{url_for('static',filename='js/demo/chart-bar-demo.js')}}"></script>
 <script>
   $(document).ready( function () {
-    $('#newsData').DataTable();
+    $('#newsData').DataTable({
+		responsive: true
+	});
   } );
 </script>
 </body>

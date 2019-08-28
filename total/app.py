@@ -16,7 +16,7 @@ def hello_world():
     conn = sqlite3.connect('naver_news.db')
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    c.execute("select * from table2 where id< 100")
+    c.execute("select * from db20190828 where id< 100")
     rows = c.fetchall()
     if request.method == 'POST':
         print(request.data)
@@ -35,7 +35,7 @@ def hello_world2():
     conn = sqlite3.connect('naver_news.db')
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    c.execute("select * from table2 where id< 101")
+    c.execute("select * from db20190828 where id< 101")
     rows = c.fetchall()
     return render_template('2_1news.html',rows = rows)
 
