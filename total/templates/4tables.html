@@ -106,32 +106,16 @@
 				<h2> 분석 결과 </h2>
 				<div class="row mb-3">
 					<!-- 중요 문장 표시? -->
-					<div class="col" style="width:100%;">
-						<div class="card shadow">
+					<div class="col" style="width:50%; padding-right:8px;">
+						<div class="card shadow" style="height:100%;">
 							<div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
 
-								<h5 class="text-left m-2 font-weight-bold text-primary">기여도 높은 문장</h5>
+					    		  <h5 class="text-left m-2 font-weight-bold text-primary">기여도 높은 문장</h5>
 
-							</div>
-							<div class="card-body" style="min-height:100px;">
-								<div class="card-text" id="polarized">
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row mb-3">
-					<!-- 워드 클라우드 -->
-					<div class="col" style="padding-right:8px; width:50%;">
-						<div class="card shadow">
-							<div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
-								<h5 class="text-left m-2 font-weight-bold text-primary">워드 클라우드</h5>
-							</div>
-							<!-- Card Body -->
+                            </div>
 							<div class="card-body">
-								<div class="chart-area">
-									<canvas id="myAreaChart"></canvas>
+								<div id="polarized" class="card-text">
+
 								</div>
 							</div>
 						</div>

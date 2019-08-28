@@ -3,7 +3,7 @@ from flask import Flask,render_template, request
 import sqlite3
 import json
 import pickle
-from Model import W2V_LR
+from Model import tfidf_LR
 from flask import g
 import os
 
@@ -21,7 +21,7 @@ def hello_world():
     if request.method == 'POST':
         print(request.data)
         idx = int(request.data.decode("utf-8").split('=')[1])
-        classifier = W2V_LR()
+        classifier = tfidf_LR()
         prob_article = list(classifier.predict_article(rows[idx]["content"])[0])
         most_polarized = list(classifier.predict_sentences(rows[idx]["content"]))
         print(prob_article)
@@ -61,7 +61,7 @@ def hello_world4():
 def hello_world5():
     if request.method == 'POST':
         text = request.data.decode('utf-8')
-        classifier = W2V_LR()
+        classifier = tfidf_LR()
         prob_text = list(classifier.predict_article(text)[0])
         most_polarized = list(classifier.predict_sentences(text))
         print(prob_text, most_polarized)

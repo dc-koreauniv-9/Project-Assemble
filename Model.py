@@ -12,7 +12,7 @@ import pickle
 
 
 
-class W2V_LR():
+class tfidf_LR():
     def __init__(self):
         with open("./tfidf_model.pkl ", "rb") as fp:  #
             self.model = joblib.load(fp)
